@@ -1,8 +1,9 @@
 import ElephantBackground from '../imgs/ElephantBackground.png'
+import s from './Profile.module.css'
 
 export const Profile = () => {
     return (
-        <div className="content">
+        <div className={s.content}>
         <img src={ElephantBackground} alt="Elephant background" />
         <div>Avatar + description</div>
         <div>
@@ -10,8 +11,8 @@ export const Profile = () => {
           <div>New post</div>
         </div>
         <div>
-          <div>post1</div>
-          <div>post2</div>
+          <div className={s.item}>post1</div>
+          <div className={s.item}>post2</div>
         </div>
       </div>
     )

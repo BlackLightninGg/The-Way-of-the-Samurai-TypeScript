@@ -1,10 +1,10 @@
 import logoZoo from '../imgs/Zoo.png'
-import './Header.css'
+import s from './Header.module.css'
 
 export const Header = () => {
     return (
-        <header className="header">
-            <img className='logoZoo' src={logoZoo} alt="Zoo logo" />
+        <header className={s.header}>
+            <img className={s.logoZoo} src={logoZoo} alt="Zoo logo" />
         </header>
     )
 }

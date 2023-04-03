@@ -1,0 +1,9 @@
+.header{
+  grid-area: header;
+  background-color: brown;
+}
+
+.logoZoo{
+  max-width: 140px;
+  margin: -25px -45px;
+}
