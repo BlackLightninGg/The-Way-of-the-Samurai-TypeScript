@@ -1,14 +1,20 @@
 import s from './Post.module.css'
 import AvatarElephant from '../../../../imgs/Elephant.png'
 
-export const Post = () => {
+type PostType = {
+  message: string
+  likeCounter: number
+}
+
+
+export const Post = (props:PostType) => {
   return (
     <div>
       <div className={s.item}>
         <img src={AvatarElephant} alt="Avatar elephant" />
-        post 1
+        {props.message}
         <div>
-          <span>like</span>
+          <span>like {props.likeCounter}</span>
         </div>
       </div>
     </div>
