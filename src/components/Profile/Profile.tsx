@@ -4,7 +4,7 @@ import s from './Profile.module.css'
 
 export const Profile = () => {
   return (
-    <div className={s.content}>
+    <div>
       <img src={ElephantBackground} alt="Elephant background" />
       <div>Avatar + description</div>
        <MyPosts/>

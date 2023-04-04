@@ -8,4 +8,7 @@
   /* grid-gap: 10px; */
 }
 
-
+.content{
+  grid-area: content;
+  background-color: chartreuse;
+}

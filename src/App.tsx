@@ -1,14 +1,18 @@
-import "./App.css";
+import s from './App.module.css'
 import { Header } from "./components/Header/Header";
+import { Messages } from "./components/Messages/Messages";
 import { Navbar } from "./components/Navbar/Navbar";
 import { Profile } from "./components/Profile/Profile";
 
 const App = () => {
   return (
-    <div className="appWrapper">
+    <div className={s.appWrapper}>
       <Header />
       <Navbar />
-      <Profile />
+      <div className={s.content}>
+        {/* <Profile /> */}
+        <Messages />
+      </div>
     </div>
   );
 }
