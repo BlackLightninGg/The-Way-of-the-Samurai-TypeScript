@@ -1,12 +1,15 @@
 .navbar {
   grid-area: navbar;
   background-color: darkblue;
+  padding: 15px 20px;
 }
 
-.item a{
-  color: white
+.item {
+  color: white;
+  text-decoration-line: none;
 }
 
 .active {
   color: gold;
+  text-decoration-line: none;
 }
