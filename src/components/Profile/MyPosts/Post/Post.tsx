@@ -9,7 +9,7 @@ type PostType = {
 
 export const Post = (props:PostType) => {
   return (
-    <div>
+    <div className={s.asa}>
       <div className={s.item}>
         <img src={AvatarElephant} alt="Avatar elephant" />
         {props.message}

@@ -1,0 +1,10 @@
+.dialogItem {
+    color: daпrkblue;
+    text-decoration-line: none;
+    padding-bottom: 5px;
+}
+
+.activeDialogItem {
+    color: rgba(230, 42, 28, 0.616);
+    text-decoration-line: none;
+}
