@@ -23,16 +23,10 @@ export const Messages: React.FC = () => {
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-                <DialogUser id={messagesUsersData[0].id} animalName={messagesUsersData[0].animalName}/>
-                <DialogUser id={messagesUsersData[1].id} animalName={messagesUsersData[1].animalName}/>
-                <DialogUser id={messagesUsersData[2].id} animalName={messagesUsersData[2].animalName}/>
-                <DialogUser id={messagesUsersData[3].id} animalName={messagesUsersData[3].animalName}/>
+                {messagesUsersData.map(u => <DialogUser id={u.id} animalName={u.animalName}/>)}
             </div>
             <div className={s.messages}>
-                <UserMessages id={messagesTextData[0].id} messageText={messagesTextData[0].messageText}/>
-                <UserMessages id={messagesTextData[1].id} messageText={messagesTextData[1].messageText}/>
-                <UserMessages id={messagesTextData[2].id} messageText={messagesTextData[2].messageText}/>
-                <UserMessages id={messagesTextData[3].id} messageText={messagesTextData[3].messageText}/>
+                {messagesTextData.map(m => <UserMessages id={m.id} messageText={m.messageText}/>)}
             </div>
         </div>
     )

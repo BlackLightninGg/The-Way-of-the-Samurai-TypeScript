@@ -20,8 +20,9 @@ export const MyPosts: React.FC = () => {
                     <button className={s.buttonPost}>Add post</button>
                 </div>
             </div>
-            <Post id={postData[0].id} message={postData[0].message} likeCounter={postData[0].likeCounter}/>
-            <Post id={postData[1].id} message={postData[1].message} likeCounter={postData[1].likeCounter}/>
+
+            {postData.map(p => <Post id={p.id} message={p.message} likeCounter={p.likeCounter}/>)}
+
         </div>
     )
 }

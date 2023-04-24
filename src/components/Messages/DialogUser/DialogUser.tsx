@@ -1,10 +1,10 @@
-import s from './DialogUser.module.css'
-import {NavLink} from 'react-router-dom'
 import React from "react";
+import {NavLink} from 'react-router-dom'
+import s from './DialogUser.module.css'
 
 export type DialogUserType = {
-    animalName: string
     id: number
+    animalName: string
 }
 
 

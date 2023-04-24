@@ -3,9 +3,9 @@ import AvatarElephant from '../../../../imgs/Elephant.png'
 import React from "react";
 
 export type PostType = {
+  id: number
   message: string
   likeCounter: number
-  id: number
 }
 
 
