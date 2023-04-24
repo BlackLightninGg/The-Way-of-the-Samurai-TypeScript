@@ -2,13 +2,10 @@ import s from './MyPosts.module.css'
 import {Post, PostType} from './Post/Post'
 import React from "react";
 
-export const MyPosts: React.FC = () => {
-
-    const postData: PostType[] = [
-        {id: 1, message: "Beautiful!", likeCounter: 9},
-        {id: 2, message: "Have a nice day!", likeCounter: 5},
-    ]
-
+type PropsType = {
+    postData: PostType[]
+}
+export const MyPosts: React.FC<PropsType> = ({postData}) => {
     return (
         <div className={s.posts}>
             <div>
