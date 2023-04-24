@@ -12,13 +12,19 @@ import {DialogUserType} from "./components/Messages/DialogUser/DialogUser";
 import {UserMessageType} from "./components/Messages/UserMessage/UserMessage";
 import {PostType} from "./components/Profile/MyPosts/Post/Post";
 
-type PropsType = {
+type StateType = {
     messagesUsersData: DialogUserType[]
     messagesTextData: UserMessageType[]
     postData: PostType[]
 }
 
-const App: React.FC<PropsType> = ({messagesUsersData, messagesTextData, postData}) => {
+type PropsType = {
+    state: StateType
+}
+
+const App: React.FC<PropsType> = (props) => {
+    const {messagesUsersData, messagesTextData, postData} = props.state
+
     return (
         <BrowserRouter>
             <div className={s.appWrapper}>
