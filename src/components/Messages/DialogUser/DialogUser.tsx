@@ -1,16 +1,18 @@
 import s from './DialogUser.module.css'
-import { NavLink } from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import React from "react";
-type DialogUserType = {
-  animalNick: string
+
+export type DialogUserType = {
+    animalName: string
+    id: number
 }
 
 
-
-export const DialogUser : React.FC<DialogUserType> = ({animalNick}) => {
-  return (
-    <div className={s.dialogItem}>
-      <NavLink to={animalNick.toLowerCase()} className={navData => navData.isActive ? s.activeDialogItem : s.dialogItem}>{animalNick}</NavLink>
-    </div>
-  )
+export const DialogUser: React.FC<DialogUserType> = ({animalName}) => {
+    return (
+        <div className={s.dialogItem}>
+            <NavLink to={animalName.toLowerCase()}
+                     className={navData => navData.isActive ? s.activeDialogItem : s.dialogItem}>{animalName}</NavLink>
+        </div>
+    )
 }
