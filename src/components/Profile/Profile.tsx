@@ -1,11 +1,12 @@
 import { MyPosts } from './MyPosts/MyPosts'
 import s from './Profile.module.css'
-import { ProlifeInformation } from './ProlifeInformation/ProlifeInformation'
+import {ProfileInformation} from './ProfileInformation/ProfileInformation'
+import React from "react";
 
-export const Profile = () => {
+export const Profile : React.FC = () => {
   return (
     <div>
-      <ProlifeInformation />
+      <ProfileInformation />
       <MyPosts />
     </div>
   )

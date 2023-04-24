@@ -1,7 +1,8 @@
 import s from './MyPosts.module.css'
 import { Post } from './Post/Post'
+import React from "react";
 
-export const MyPosts = () => {
+export const MyPosts: React.FC = () => {
   return (
     <div className={s.posts}>
       <div>

@@ -1,5 +1,6 @@
 import s from './Post.module.css'
 import AvatarElephant from '../../../../imgs/Elephant.png'
+import React from "react";
 
 type PostType = {
   message: string
@@ -7,14 +8,14 @@ type PostType = {
 }
 
 
-export const Post = (props:PostType) => {
+export const Post : React.FC<PostType> = ({message, likeCounter}) => {
   return (
     <div className={s.asa}>
       <div className={s.item}>
         <img src={AvatarElephant} alt="Avatar elephant" />
-        {props.message}
+        {message}
         <div>
-          <span>like {props.likeCounter}</span>
+          <span>like {likeCounter}</span>
         </div>
       </div>
     </div>

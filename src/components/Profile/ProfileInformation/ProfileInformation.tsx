@@ -1,7 +1,8 @@
 import ElephantBackground from '../../../imgs/ElephantBackground.png'
-import s from './ProlifeInformation.module.css'
+import s from './ProfileInformation.module.css'
+import React from "react";
 
-export const ProlifeInformation = () => {
+export const ProfileInformation : React.FC = () => {
   return (
     <div className={s.description}>
       <img src={ElephantBackground} alt="Elephant background" />

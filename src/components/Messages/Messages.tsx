@@ -1,9 +1,10 @@
 import s from './Messages.module.css'
 import { DialogUser } from './DialogUser/DialogUser'
 import { UserMessages } from './UserMessages/UserMessages'
+import React from "react";
 
 
-export const Messages = () => {
+export const Messages : React.FC = () => {
 
   return (
     <div className={s.dialogs}>
