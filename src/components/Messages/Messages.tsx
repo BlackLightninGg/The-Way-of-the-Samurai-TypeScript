@@ -11,7 +11,7 @@ export const Messages: React.FC<PropsType> = ({messagesUsersData, messagesTextDa
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-                {messagesUsersData.map(u => <DialogUser id={u.id} animalName={u.animalName}/>)}
+                {messagesUsersData.map(u => <DialogUser id={u.id} animalName={u.animalName} photoAvatar={u.photoAvatar}/>)}
             </div>
             <div className={s.messages}>
                 {messagesTextData.map(m => <UserMessage id={m.id} messageText={m.messageText}/>)}

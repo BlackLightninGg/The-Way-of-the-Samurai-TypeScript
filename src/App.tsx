@@ -1,4 +1,4 @@
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 import s from './App.module.css'
 import {Header} from "./components/Header/Header";
 import {Messages} from "./components/Messages/Messages";
@@ -24,9 +24,8 @@ type PropsType = {
 
 const App: React.FC<PropsType> = (props) => {
     const {messagesUsersData, messagesTextData, postData} = props.state
-
     return (
-        <BrowserRouter>
+
             <div className={s.appWrapper}>
                 <Header/>
                 <Navbar/>
@@ -41,7 +40,6 @@ const App: React.FC<PropsType> = (props) => {
                     </Routes>
                 </div>
             </div>
-        </BrowserRouter>
     );
 }
 

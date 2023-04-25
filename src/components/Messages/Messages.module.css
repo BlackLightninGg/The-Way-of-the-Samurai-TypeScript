@@ -1,9 +1,11 @@
 .dialogs {
-    display: grid;
-    grid-template-columns: 3fr 10fr;
-    padding: 20px 30px;
+    display: flex;
+    flex-direction: row;
+    padding: 20px 20px 10px 30px;
+    justify-content: space-between;
 }
 
 .dialogsItems {}
 
-.messages {}
+.messages {
+}
