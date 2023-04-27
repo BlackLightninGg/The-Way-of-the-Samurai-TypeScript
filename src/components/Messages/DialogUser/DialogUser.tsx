@@ -1,15 +1,9 @@
 import React from "react";
 import {NavLink} from 'react-router-dom'
 import s from './DialogUser.module.css'
+import {UsersDataType} from "../../../redux/state";
 
-export type DialogUserType = {
-    id: number
-    animalName: string
-    photoAvatar: string
-}
-
-
-export const DialogUser: React.FC<DialogUserType> = ({id, animalName, photoAvatar}) => {
+export const DialogUser: React.FC<UsersDataType> = ({id, animalName, photoAvatar}) => {
     return (
         <div className={s.dialogItem}>
             <NavLink to={`${animalName.toLowerCase() +'/' +id}`}

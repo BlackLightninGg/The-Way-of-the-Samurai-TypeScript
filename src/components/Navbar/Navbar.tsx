@@ -2,9 +2,12 @@ import {NavLink} from 'react-router-dom'
 import s from './Navbar.module.css'
 import React from "react";
 import {FriendsSection} from "./FriendsSection/FriendsSection";
-import {state} from "../../redux/state";
+import {UsersDataType} from "../../redux/state";
 
-export const Navbar: React.FC = () => {
+type PropsType = {
+    friendsData:UsersDataType[]
+}
+export const Navbar: React.FC<PropsType> = ({friendsData}) => {
     return (
         <nav className={s.navbar}>
             <div className={s.navButtonsSection}>
@@ -27,7 +30,7 @@ export const Navbar: React.FC = () => {
                 </div>
             </div>
             <div className={s.navFriendSection}>
-                <FriendsSection friendsData={state.messagesUsersData}/>
+                <FriendsSection friendsData={friendsData}/>
             </div>
 
         </nav>

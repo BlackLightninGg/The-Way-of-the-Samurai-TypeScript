@@ -1,9 +1,10 @@
 import s from './MyPosts.module.css'
-import {Post, PostType} from './Post/Post'
+import {Post} from './Post/Post'
 import React from "react";
+import {PostDataType} from "../../../redux/state";
 
 type PropsType = {
-    postData: PostType[]
+    postData: PostDataType[]
 }
 export const MyPosts: React.FC<PropsType> = ({postData}) => {
     return (

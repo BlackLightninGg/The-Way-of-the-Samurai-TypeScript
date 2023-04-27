@@ -2,7 +2,31 @@ import AvatarFox from '../imgs/Fox.png'
 import AvatarBear from '../imgs/Bear.png'
 import AvatarOwl from '../imgs/Owl.png'
 import AvatarWolf from '../imgs/Wolf.png'
-export const state = {
+
+export type StateType = {
+    messagesUsersData:UsersDataType[]
+    messagesTextData:TextDataType[]
+    postData:PostDataType[]
+}
+
+export type UsersDataType = {
+    id: number
+    animalName: string
+    photoAvatar: string
+}
+
+export type TextDataType = {
+    id: number
+    messageText: string
+}
+
+export type PostDataType = {
+    id: number
+    message: string
+    likeCounter: number
+}
+
+export const state:StateType = {
     messagesUsersData: [
         {id: 1, animalName: 'Fox', photoAvatar: AvatarFox},
         {id: 2, animalName: 'Bear', photoAvatar: AvatarBear},
