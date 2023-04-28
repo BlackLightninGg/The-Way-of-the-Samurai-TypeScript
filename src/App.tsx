@@ -7,15 +7,17 @@ import {Profile} from "./components/Profile/Profile";
 import {News} from './components/News/News';
 import {Music} from './components/Music/Music';
 import {Settings} from './components/Settings/Settings';
-import {StateType} from "./redux/state";
+import {addPostType, StateType} from "./redux/state";
 import s from './App.module.css'
 
 type PropsType = {
     state: StateType
+    addPost: addPostType
 }
 
-const App: React.FC<PropsType> = (props) => {
+const App: React.FC<PropsType> = (props  ) => {
     const {messagesUsersData, messagesTextData, postData} = props.state
+    const addPost = props.addPost
     return (
 
         <div className={s.appWrapper}>
@@ -25,7 +27,7 @@ const App: React.FC<PropsType> = (props) => {
                 <Routes>
                     <Route path='/messages/*' element={<Messages messagesUsersData={messagesUsersData}
                                                                  messagesTextData={messagesTextData}/>}/>
-                    <Route path='/profile' element={<Profile postData={postData}/>}/>
+                    <Route path='/profile' element={<Profile postData={postData} addPost={addPost}/>}/>
                     <Route path='/news' element={<News/>}/>
                     <Route path='/music' element={<Music/>}/>
                     <Route path='/settings' element={<Settings/>}/>

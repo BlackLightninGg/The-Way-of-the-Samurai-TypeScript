@@ -2,6 +2,7 @@ import AvatarFox from '../imgs/Fox.png'
 import AvatarBear from '../imgs/Bear.png'
 import AvatarOwl from '../imgs/Owl.png'
 import AvatarWolf from '../imgs/Wolf.png'
+import {renderEntireTree} from "../Render";
 
 export type StateType = {
     messagesUsersData:UsersDataType[]
@@ -44,4 +45,11 @@ export const state:StateType = {
         {id: 2, message: "Have a nice day!", likeCounter: 5},
     ],
 
+}
+
+
+export type addPostType = (t:string)=> void
+export const addPost = (t:string) => {
+    state.postData.push({id: state.postData.length + 1, message: t, likeCounter: 0})
+    renderEntireTree(state)
 }
