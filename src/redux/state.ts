@@ -2,7 +2,6 @@ import AvatarFox from '../imgs/Fox.png'
 import AvatarBear from '../imgs/Bear.png'
 import AvatarOwl from '../imgs/Owl.png'
 import AvatarWolf from '../imgs/Wolf.png'
-import {renderEntireTree} from "../Render";
 
 export type StateType = {
     profileData: ProfileDataType
@@ -32,6 +31,12 @@ export type TextDataType = {
     messageText: string
 }
 
+type subscriberType = (state: StateType) => void
+
+export type addPostType = () => void
+export type changePostTextType = (t: string) => void
+
+
 export const state: StateType = {
     messagesUsersData: [
         {id: 1, animalName: 'Fox', photoAvatar: AvatarFox},
@@ -55,9 +60,8 @@ export const state: StateType = {
 
 }
 
+let renderEntireTree: subscriberType
 
-export type addPostType = () => void
-export type changePostTextType = (t: string) => void
 export const addPost = () => {
     if (state.profileData.textPost.trim() !== '') {
         state.profileData.postData.push({
@@ -73,4 +77,8 @@ export const addPost = () => {
 export const changePostText = (t: string) => {
     state.profileData.textPost = t
     renderEntireTree(state)
+}
+
+export const subscriber = (observer: subscriberType) => {
+    renderEntireTree = observer
 }
