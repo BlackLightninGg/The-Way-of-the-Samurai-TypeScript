@@ -1,35 +1,36 @@
 import s from './MyPosts.module.css'
 import {Post} from './Post/Post'
-import React, {useRef} from "react";
-import {addPostType, PostDataType} from "../../../redux/state";
+import React, {ChangeEvent} from "react";
+import {addPostType, changePostTextType, ProfileDataType} from "../../../redux/state";
 
 type PropsType = {
-    postData: PostDataType[]
+    profileData: ProfileDataType
     addPost: addPostType
+    changePostText: changePostTextType
 }
-export const MyPosts: React.FC<PropsType> = ({postData, addPost} ) => {
-    const getInput = useRef<HTMLTextAreaElement>(null)
+export const MyPosts: React.FC<PropsType> = ({profileData, addPost, changePostText}) => {
     const onClickAddPostHandler = () => {
-        if (getInput.current){
-            if (getInput.current.value.trim() !== ''){
-                addPost(getInput.current.value.trim())
-                getInput.current.value = ''
-            }
-        }
+        addPost()
     }
+
+    const onChangeInputPostHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        changePostText(e.currentTarget.value)
+    }
+
     return (
         <div className={s.posts}>
             <div>
                 <h3>My posts</h3>
                 <div>
-                    <textarea ref={getInput}></textarea>
+                    <textarea value={profileData.textPost} onChange={onChangeInputPostHandler}/>
                 </div>
                 <div>
-                    <button className={s.buttonPost}  onClick={onClickAddPostHandler}>Add post</button>
+                    <button className={s.buttonPost} onClick={onClickAddPostHandler}>Add post</button>
                 </div>
             </div>
 
-            {postData.map(p => <Post key={p.id} id={p.id} message={p.message} likeCounter={p.likeCounter}/>)}
+            {profileData.postData.map(p => <Post key={p.id} id={p.id} message={p.message}
+                                                 likeCounter={p.likeCounter}/>)}
 
         </div>
     )

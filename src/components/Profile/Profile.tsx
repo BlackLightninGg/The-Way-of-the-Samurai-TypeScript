@@ -1,17 +1,18 @@
 import {MyPosts} from './MyPosts/MyPosts'
 import {ProfileInformation} from './ProfileInformation/ProfileInformation'
 import React from "react";
-import {addPostType, PostDataType} from "../../redux/state";
+import {addPostType, changePostTextType, ProfileDataType} from "../../redux/state";
 
 type PropsType = {
-    postData: PostDataType[]
+    profileData: ProfileDataType
     addPost : addPostType
+    changePostText : changePostTextType
 }
-export const Profile: React.FC<PropsType> = ({postData, addPost}) => {
+export const Profile: React.FC<PropsType> = ({profileData, addPost, changePostText}) => {
     return (
         <div>
             <ProfileInformation/>
-            <MyPosts postData={postData} addPost={addPost}/>
+            <MyPosts profileData={profileData} addPost={addPost} changePostText={changePostText}/>
         </div>
     )
 }

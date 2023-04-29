@@ -5,9 +5,20 @@ import AvatarWolf from '../imgs/Wolf.png'
 import {renderEntireTree} from "../Render";
 
 export type StateType = {
-    messagesUsersData:UsersDataType[]
-    messagesTextData:TextDataType[]
-    postData:PostDataType[]
+    profileData: ProfileDataType
+    messagesUsersData: UsersDataType[]
+    messagesTextData: TextDataType[]
+}
+
+export type ProfileDataType = {
+    postData: PostDataType[]
+    textPost: string
+}
+
+export type PostDataType = {
+    id: number
+    message: string
+    likeCounter: number
 }
 
 export type UsersDataType = {
@@ -21,13 +32,7 @@ export type TextDataType = {
     messageText: string
 }
 
-export type PostDataType = {
-    id: number
-    message: string
-    likeCounter: number
-}
-
-export const state:StateType = {
+export const state: StateType = {
     messagesUsersData: [
         {id: 1, animalName: 'Fox', photoAvatar: AvatarFox},
         {id: 2, animalName: 'Bear', photoAvatar: AvatarBear},
@@ -40,16 +45,32 @@ export const state:StateType = {
         {id: 3, messageText: 'Wo! Wooo!'},
         {id: 4, messageText: 'Woyyyyy! woyyyy!'},
     ],
-    postData: [
-        {id: 1, message: "Beautiful!", likeCounter: 9},
-        {id: 2, message: "Have a nice day!", likeCounter: 5},
-    ],
+    profileData: {
+        postData: [
+            {id: 1, message: "Beautiful!", likeCounter: 9},
+            {id: 2, message: "Have a nice day!", likeCounter: 5},
+        ],
+        textPost: ''
+    }
 
 }
 
 
-export type addPostType = (t:string)=> void
-export const addPost = (t:string) => {
-    state.postData.push({id: state.postData.length + 1, message: t, likeCounter: 0})
+export type addPostType = () => void
+export type changePostTextType = (t: string) => void
+export const addPost = () => {
+    if (state.profileData.textPost.trim() !== '') {
+        state.profileData.postData.push({
+            id: state.profileData.postData.length + 1,
+            message: state.profileData.textPost,
+            likeCounter: 0
+        })
+        state.profileData.textPost = ''
+        renderEntireTree(state)
+    }
+}
+
+export const changePostText = (t: string) => {
+    state.profileData.textPost = t
     renderEntireTree(state)
 }
