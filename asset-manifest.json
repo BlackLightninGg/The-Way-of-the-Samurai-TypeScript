@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/The-Way-of-the-Samurai-TypeScript/static/css/main.ccaa171d.css",
+    "main.js": "/The-Way-of-the-Samurai-TypeScript/static/js/main.2a36c5d7.js",
+    "static/media/ElephantBackground.png": "/The-Way-of-the-Samurai-TypeScript/static/media/ElephantBackground.3ef4a8f6182f3473fbe1.png",
+    "static/media/Zoo.png": "/The-Way-of-the-Samurai-TypeScript/static/media/Zoo.2ddcfaf6b36b8156cb12.png",
+    "static/media/Owl.png": "/The-Way-of-the-Samurai-TypeScript/static/media/Owl.bfd91f1d26708c6b40bf.png",
+    "static/media/Elephant.png": "/The-Way-of-the-Samurai-TypeScript/static/media/Elephant.07bf947c6895edd1f59d.png",
+    "static/media/Fox.png": "/The-Way-of-the-Samurai-TypeScript/static/media/Fox.63c4fdb004a8112b1114.png",
+    "static/media/Wolf.png": "/The-Way-of-the-Samurai-TypeScript/static/media/Wolf.63218df1a69334167d64.png",
+    "static/media/Bear.png": "/The-Way-of-the-Samurai-TypeScript/static/media/Bear.6f2594d0edfe79fefcd2.png",
+    "index.html": "/The-Way-of-the-Samurai-TypeScript/index.html",
+    "main.ccaa171d.css.map": "/The-Way-of-the-Samurai-TypeScript/static/css/main.ccaa171d.css.map",
+    "main.2a36c5d7.js.map": "/The-Way-of-the-Samurai-TypeScript/static/js/main.2a36c5d7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ccaa171d.css",
+    "static/js/main.2a36c5d7.js"
+  ]
+}
