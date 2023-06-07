@@ -1,18 +1,16 @@
-import {MyPosts} from './MyPosts/MyPosts'
-import {ProfileInformation} from './ProfileInformation/ProfileInformation'
-import React from "react";
-import {addPostType, changePostTextType, ProfileDataType} from "../../redux/state";
+import { ActionType, ProfileDataType } from "../../redux/state";
+import { MyPosts } from './MyPosts/MyPosts';
+import { ProfileInformation } from './ProfileInformation/ProfileInformation';
 
-type PropsType = {
+type ProfilePropsType = {
     profileData: ProfileDataType
-    addPost : addPostType
-    changePostText : changePostTextType
+    dispatch: (action: ActionType) => void
 }
-export const Profile: React.FC<PropsType> = ({profileData, addPost, changePostText}) => {
+export const Profile = ({ profileData, dispatch }: ProfilePropsType) => {
     return (
         <div>
-            <ProfileInformation/>
-            <MyPosts profileData={profileData} addPost={addPost} changePostText={changePostText}/>
+            <ProfileInformation />
+            <MyPosts profileData={profileData} dispatch={dispatch} />
         </div>
     )
 }

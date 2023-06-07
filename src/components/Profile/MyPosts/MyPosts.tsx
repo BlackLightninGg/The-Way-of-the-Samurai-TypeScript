@@ -1,17 +1,20 @@
-import s from './MyPosts.module.css'
-import {Post} from './Post/Post'
-import React, {ChangeEvent} from "react";
-import {addPostType, changePostTextType, ProfileDataType} from "../../../redux/state";
+import { ChangeEvent } from "react";
+import { ActionType, ProfileDataType } from "../../../redux/state";
+import s from './MyPosts.module.css';
+import { Post } from './Post/Post';
 
-type PropsType = {
+type MyPostsPropsType = {
     profileData: ProfileDataType
-    addPost: addPostType
-    changePostText: changePostTextType
+    dispatch: (action: ActionType) => void
 }
-export const MyPosts = ({profileData, addPost, changePostText}: PropsType) => {
+export const MyPosts = ({ profileData, dispatch }: MyPostsPropsType) => {
 
     const onChangeInputPostHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        changePostText(e.currentTarget.value)
+        dispatch({ type: "CHANGE-POST-TEXT", payload: { newText: e.currentTarget.value } })
+    }
+
+    const onClickAddPostHandler = () => {
+        dispatch({type:"ADD-POST"})
     }
 
     return (
@@ -19,15 +22,15 @@ export const MyPosts = ({profileData, addPost, changePostText}: PropsType) => {
             <div>
                 <h3>My posts</h3>
                 <div>
-                    <textarea value={profileData.textPost} onChange={onChangeInputPostHandler}/>
+                    <textarea value={profileData.textPost} onChange={onChangeInputPostHandler} />
                 </div>
                 <div>
-                    <button className={s.buttonPost} onClick={()=>addPost()}>Add post</button>
+                    <button className={s.buttonPost} onClick={onClickAddPostHandler}>Add post</button>
                 </div>
             </div>
 
             {profileData.postData.map(p => <Post key={p.id} id={p.id} message={p.message}
-                                                 likeCounter={p.likeCounter}/>)}
+                likeCounter={p.likeCounter} />)}
 
         </div>
     )

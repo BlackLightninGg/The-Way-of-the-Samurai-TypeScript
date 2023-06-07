@@ -1,8 +1,7 @@
-import ElephantBackground from '../../../imgs/ElephantBackground.png'
-import s from './ProfileInformation.module.css'
-import React from "react";
+import ElephantBackground from '../../../imgs/ElephantBackground.png';
+import s from './ProfileInformation.module.css';
 
-export const ProfileInformation : React.FC = () => {
+export const ProfileInformation = () => {
   return (
     <div className={s.description}>
       <img src={ElephantBackground} alt="Elephant background" />

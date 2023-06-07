@@ -9,14 +9,13 @@ import { Profile } from "./components/Profile/Profile";
 import { Settings } from './components/Settings/Settings';
 import { StoreType } from "./redux/state";
 
-type AppType = {
+type AppPropsType = {
     store: StoreType
 }
 
-const App = ({ store }: AppType) => {
+const App = ({ store }: AppPropsType) => {
     const { messagesUsersData, messagesTextData, profileData } = store.getState()
-    const addPost = store.addPost.bind(store)
-    const changePostText = store.changePostText.bind(store)
+    const dispatch = store.dispatch.bind(store)
     return (
 
         <div className={s.appWrapper}>
@@ -26,7 +25,7 @@ const App = ({ store }: AppType) => {
                 <Routes>
                     <Route path='/messages/*' element={<Messages messagesUsersData={messagesUsersData}
                         messagesTextData={messagesTextData} />} />
-                    <Route path='/profile' element={<Profile profileData={profileData} addPost={addPost} changePostText={changePostText} />} />
+                    <Route path='/profile' element={<Profile profileData={profileData} dispatch={dispatch} />} />
                     <Route path='/news' element={<News />} />
                     <Route path='/music' element={<Music />} />
                     <Route path='/settings' element={<Settings />} />
