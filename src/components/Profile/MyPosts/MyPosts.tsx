@@ -8,10 +8,7 @@ type PropsType = {
     addPost: addPostType
     changePostText: changePostTextType
 }
-export const MyPosts: React.FC<PropsType> = ({profileData, addPost, changePostText}) => {
-    const onClickAddPostHandler = () => {
-        addPost()
-    }
+export const MyPosts = ({profileData, addPost, changePostText}: PropsType) => {
 
     const onChangeInputPostHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         changePostText(e.currentTarget.value)
@@ -25,7 +22,7 @@ export const MyPosts: React.FC<PropsType> = ({profileData, addPost, changePostTe
                     <textarea value={profileData.textPost} onChange={onChangeInputPostHandler}/>
                 </div>
                 <div>
-                    <button className={s.buttonPost} onClick={onClickAddPostHandler}>Add post</button>
+                    <button className={s.buttonPost} onClick={()=>addPost()}>Add post</button>
                 </div>
             </div>
 
