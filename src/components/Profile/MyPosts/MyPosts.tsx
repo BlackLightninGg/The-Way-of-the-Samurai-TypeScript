@@ -1,5 +1,5 @@
 import { ChangeEvent } from "react";
-import { ActionType, ProfileDataType } from "../../../redux/state";
+import { ActionType, ProfileDataType, addPostAC, changePostTextAC } from "../../../redux/state";
 import s from './MyPosts.module.css';
 import { Post } from './Post/Post';
 
@@ -10,11 +10,11 @@ type MyPostsPropsType = {
 export const MyPosts = ({ profileData, dispatch }: MyPostsPropsType) => {
 
     const onChangeInputPostHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        dispatch({ type: "CHANGE-POST-TEXT", payload: { newText: e.currentTarget.value } })
+        dispatch(changePostTextAC(e.currentTarget.value))
     }
 
     const onClickAddPostHandler = () => {
-        dispatch({type:"ADD-POST"})
+        dispatch(addPostAC())
     }
 
     return (

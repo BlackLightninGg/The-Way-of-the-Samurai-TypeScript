@@ -3,12 +3,15 @@ import AvatarBear from '../imgs/Bear.png'
 import AvatarOwl from '../imgs/Owl.png'
 import AvatarWolf from '../imgs/Wolf.png'
 
+const ADD_POST = "ADD-POST"
+const CHANGE_POST_TEXT = "CHANGE-POST-TEXT"
+
 export type StoreType = {
     _state: StateType
     getState: () => StateType
     _renderEntireTree: () => void
-   
-   
+
+
     subscribe: (observer: SubscriberType) => void
     dispatch: (action: ActionType) => void
 }
@@ -99,8 +102,8 @@ export const store: StoreType = {
 
     dispatch(action) {
         switch (action.type) {
-            case "ADD-POST":
-                    
+            case ADD_POST:
+
                 if (this.getState().profileData.textPost.trim() !== '') {
                     this.getState().profileData.postData.push({
                         id: this.getState().profileData.postData.length + 1,
@@ -113,7 +116,7 @@ export const store: StoreType = {
 
                 return;
 
-            case "CHANGE-POST-TEXT":
+            case CHANGE_POST_TEXT:
                 this.getState().profileData.textPost = action.payload.newText
                 this._renderEntireTree()
 
@@ -125,3 +128,12 @@ export const store: StoreType = {
     }
 
 }
+
+export const addPostAC = () => ({ type: ADD_POST }) as const
+
+export const changePostTextAC = (newText: string) => ({
+    type: CHANGE_POST_TEXT,
+    payload: {
+        newText
+    }
+}) as const
