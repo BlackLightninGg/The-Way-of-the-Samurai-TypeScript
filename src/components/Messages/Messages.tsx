@@ -1,22 +1,33 @@
-import s from './Messages.module.css'
-import {DialogUser} from './DialogUser/DialogUser'
-import {UserMessage} from './UserMessage/UserMessage'
-import React from "react";
-import {TextDataType, UsersDataType} from "../../redux/state";
+import React, { ChangeEvent } from "react";
+import { ActionType, MessagesData, addMessageAC, changeMessageTextAC } from "../../redux/state";
+import { DialogUser } from './DialogUser/DialogUser';
+import s from './Messages.module.css';
+import { UserMessage } from './UserMessage/UserMessage';
 
 type PropsType = {
-    messagesUsersData: UsersDataType[]
-    messagesTextData: TextDataType[]
+    messagesData: MessagesData
+    dispatch: (action: ActionType)=> void
 }
-export const Messages: React.FC<PropsType> = ({messagesUsersData, messagesTextData}) => {
+export const Messages: React.FC<PropsType> = ({messagesData, dispatch}) => {
+    const onChangeMessageTextHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        dispatch(changeMessageTextAC(e.currentTarget.value))
+    }   
+    const onClickMessageTextHandler = () => {
+        dispatch(addMessageAC())
+    }   
+
+
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-                {messagesUsersData.map(u => <DialogUser key={u.id} id={u.id} animalName={u.animalName} photoAvatar={u.photoAvatar}/>)}
+                {messagesData.messagesUsersData.map(u => <DialogUser key={u.id} id={u.id} animalName={u.animalName} photoAvatar={u.photoAvatar}/>)}
             </div>
             <div className={s.messages}>
-                {messagesTextData.map(m => <UserMessage key={m.id} id={m.id} messageText={m.messageText}/>)}
+                {messagesData.messagesTextData.map(m => <UserMessage key={m.id} id={m.id} messageText={m.messageText}/>)}
+                <textarea  onChange={onChangeMessageTextHandler} value={messagesData.messageText} placeholder="Enter your message" />
+                <button onClick={onClickMessageTextHandler}>Sent message</button>
             </div>
+            
         </div>
     )
 }

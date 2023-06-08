@@ -14,17 +14,16 @@ type AppPropsType = {
 }
 
 const App = ({ store }: AppPropsType) => {
-    const { messagesUsersData, messagesTextData, profileData } = store.getState()
+    const { messagesData, profileData } = store.getState()
     const dispatch = store.dispatch.bind(store)
     return (
 
         <div className={s.appWrapper}>
             <Header />
-            <Navbar friendsData={messagesUsersData} />
+            <Navbar friendsData={messagesData.messagesUsersData} />
             <div className={s.content}>
                 <Routes>
-                    <Route path='/messages/*' element={<Messages messagesUsersData={messagesUsersData}
-                        messagesTextData={messagesTextData} />} />
+                    <Route path='/messages/*' element={<Messages messagesData={messagesData} dispatch={dispatch} />} />
                     <Route path='/profile' element={<Profile profileData={profileData} dispatch={dispatch} />} />
                     <Route path='/news' element={<News />} />
                     <Route path='/music' element={<Music />} />
