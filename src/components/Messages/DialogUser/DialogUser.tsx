@@ -1,7 +1,7 @@
 import React from "react";
 import {NavLink} from 'react-router-dom'
 import s from './DialogUser.module.css'
-import {UsersDataType} from "../../../redux/state";
+import {UsersDataType} from "../../../redux/store";
 
 export const DialogUser: React.FC<UsersDataType> = ({id, animalName, photoAvatar}) => {
     return (

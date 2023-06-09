@@ -2,7 +2,7 @@ import {NavLink} from 'react-router-dom'
 import s from './Navbar.module.css'
 import React from "react";
 import {FriendsSection} from "./FriendsSection/FriendsSection";
-import {UsersDataType} from "../../redux/state";
+import {UsersDataType} from "../../redux/store";
 
 type PropsType = {
     friendsData:UsersDataType[]

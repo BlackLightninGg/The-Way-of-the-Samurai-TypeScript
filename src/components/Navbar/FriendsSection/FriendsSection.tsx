@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./FriendsSection.module.css";
-import {UsersDataType} from "../../../redux/state";
+import {UsersDataType} from "../../../redux/store";
 
 type PropsType = {
     friendsData: UsersDataType[]

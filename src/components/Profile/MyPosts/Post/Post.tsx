@@ -1,7 +1,7 @@
 import s from './Post.module.css'
 import AvatarElephant from '../../../../imgs/Elephant.png'
 import React from "react";
-import {PostDataType} from "../../../../redux/state";
+import {PostDataType} from "../../../../redux/store";
 
 export const Post: React.FC<PostDataType> = ({message, likeCounter}) => {
     return (

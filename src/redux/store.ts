@@ -2,11 +2,8 @@ import AvatarFox from '../imgs/Fox.png'
 import AvatarBear from '../imgs/Bear.png'
 import AvatarOwl from '../imgs/Owl.png'
 import AvatarWolf from '../imgs/Wolf.png'
-
-const ADD_POST = "ADD-POST"
-const ADD_MESSAGE = "ADD-MESSAGE"
-const CHANGE_POST_TEXT = "CHANGE-POST-TEXT"
-const CHANGE_MESSAGE_TEXT = "CHANGE-MESSAGE-TEXT"
+import { profileReducer } from './profileReducer'
+import { messagesReducer } from './messagesReducer'
 
 export type StoreType = {
     _state: StateType
@@ -43,11 +40,11 @@ type ChangeMessageTextActionType = {
 }
 
 export type StateType = {
-    messagesData: MessagesData
+    messagesData: MessagesDataType
     profileData: ProfileDataType
 }
 
-export type MessagesData = {
+export type MessagesDataType = {
     messagesUsersData: UsersDataType[]
     messagesTextData: TextDataType[]
     messageText: string
@@ -126,76 +123,13 @@ export const store: StoreType = {
 
 
     dispatch(action) {
-        switch (action.type) {
-            case ADD_POST:
 
-                if (this.getState().profileData.textPost.trim() !== '') {
+        profileReducer(this.getState().profileData, action)
+        messagesReducer(this.getState().messagesData, action)
 
-                    this.getState().profileData.postData = [{
-                        id: this.getState().profileData.postData.length + 1,
-                        message: this.getState().profileData.textPost,
-                        likeCounter: 0
-                    }, ...this.getState().profileData.postData]
+        this._renderEntireTree()
 
-                    this.getState().profileData.textPost = ''
-                    this._renderEntireTree()
-
-                }
-
-                return;
-
-            case CHANGE_POST_TEXT:
-                this.getState().profileData.textPost = action.payload.newText
-                this._renderEntireTree()
-
-                return;
-
-            case CHANGE_MESSAGE_TEXT:
-                this.getState().messagesData.messageText = action.payload.newText
-                this._renderEntireTree()
-
-                return;
-
-            case ADD_MESSAGE:
-                
-
-                if (this.getState().messagesData.messageText.trim() !== '') {
-
-                    this.getState().messagesData.messagesTextData = [...this.getState().messagesData.messagesTextData, {
-                        id: this.getState().messagesData.messagesTextData.length + 1,
-                        messageText: this.getState().messagesData.messageText,
-                    }]
-
-                    this.getState().messagesData.messageText = ''
-                    this._renderEntireTree()
-                    console.log(this.getState().messagesData.messagesTextData)
-
-                }
-
-                return;
-
-
-            default:
-                return;
-        }
     }
+
 
 }
-
-export const addPostAC = () => ({ type: ADD_POST }) as const
-
-export const addMessageAC = () => ({ type: ADD_MESSAGE }) as const
-
-export const changePostTextAC = (newText: string) => ({
-    type: CHANGE_POST_TEXT,
-    payload: {
-        newText
-    }
-}) as const
-
-export const changeMessageTextAC = (newText: string) => ({
-    type: CHANGE_MESSAGE_TEXT,
-    payload: {
-        newText
-    }
-}) as const

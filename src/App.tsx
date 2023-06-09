@@ -7,7 +7,7 @@ import { Navbar } from "./components/Navbar/Navbar";
 import { News } from './components/News/News';
 import { Profile } from "./components/Profile/Profile";
 import { Settings } from './components/Settings/Settings';
-import { StoreType } from "./redux/state";
+import { StoreType } from "./redux/store";
 
 type AppPropsType = {
     store: StoreType
