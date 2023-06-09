@@ -1,8 +1,9 @@
+import { ActionType, MessagesDataType } from "./store";
+
 const ADD_MESSAGE = "ADD-MESSAGE"
 const CHANGE_MESSAGE_TEXT = "CHANGE-MESSAGE-TEXT"
 
-
-export const messagesReducer = (state: any, action: any) => {
+export const messagesReducer = (state: MessagesDataType, action: ActionType): MessagesDataType => {
     
     switch (action.type) {
         case CHANGE_MESSAGE_TEXT:
@@ -27,6 +28,18 @@ export const messagesReducer = (state: any, action: any) => {
             return state;
 
         default: return state
+    }
+}
+
+export type AddMessageActionType = {
+    type: "ADD-MESSAGE"
+}
+
+
+export type ChangeMessageTextActionType = {
+    type: "CHANGE-MESSAGE-TEXT"
+    payload: {
+        newText: string
     }
 }
 

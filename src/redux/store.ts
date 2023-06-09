@@ -1,9 +1,9 @@
-import AvatarFox from '../imgs/Fox.png'
 import AvatarBear from '../imgs/Bear.png'
+import AvatarFox from '../imgs/Fox.png'
 import AvatarOwl from '../imgs/Owl.png'
 import AvatarWolf from '../imgs/Wolf.png'
-import { profileReducer } from './profileReducer'
-import { messagesReducer } from './messagesReducer'
+import { AddMessageActionType, ChangeMessageTextActionType, messagesReducer } from './messagesReducer'
+import { AddPostActionType, ChangePostTextActionType, profileReducer } from './profileReducer'
 
 export type StoreType = {
     _state: StateType
@@ -16,28 +16,6 @@ export type StoreType = {
 }
 
 export type ActionType = AddPostActionType | ChangePostTextActionType | ChangeMessageTextActionType | AddMessageActionType
-
-type AddPostActionType = {
-    type: "ADD-POST"
-}
-
-type AddMessageActionType = {
-    type: "ADD-MESSAGE"
-}
-
-type ChangePostTextActionType = {
-    type: "CHANGE-POST-TEXT"
-    payload: {
-        newText: string
-    }
-}
-
-type ChangeMessageTextActionType = {
-    type: "CHANGE-MESSAGE-TEXT"
-    payload: {
-        newText: string
-    }
-}
 
 export type StateType = {
     messagesData: MessagesDataType

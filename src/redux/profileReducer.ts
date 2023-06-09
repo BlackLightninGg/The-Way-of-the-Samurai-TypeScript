@@ -1,7 +1,9 @@
+import { ActionType, ProfileDataType } from "./store";
+
 const ADD_POST = "ADD-POST";
 const CHANGE_POST_TEXT = "CHANGE-POST-TEXT";
 
-export const profileReducer = (state: any, action: any) => {
+export const profileReducer = (state: ProfileDataType, action: ActionType): ProfileDataType => {
 
   switch (action.type) {
     case ADD_POST:
@@ -18,7 +20,7 @@ export const profileReducer = (state: any, action: any) => {
         state.textPost = "";
 
       }
-      
+
       return state
 
     case CHANGE_POST_TEXT:
@@ -31,6 +33,19 @@ export const profileReducer = (state: any, action: any) => {
       return state;
   }
 };
+
+
+export  type AddPostActionType = {
+  type: "ADD-POST"
+}
+
+
+export  type ChangePostTextActionType = {
+  type: "CHANGE-POST-TEXT"
+  payload: {
+      newText: string
+  }
+}
 
 export const addPostAC = () => ({ type: ADD_POST } as const);
 
