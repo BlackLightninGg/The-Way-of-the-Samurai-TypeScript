@@ -26,7 +26,6 @@ export const profileReducer = (state: ProfileDataType, action: ActionType): Prof
     case CHANGE_POST_TEXT:
       state.textPost = action.payload.newText;
 
-
       return state;
 
     default:
@@ -35,17 +34,11 @@ export const profileReducer = (state: ProfileDataType, action: ActionType): Prof
 };
 
 
-export  type AddPostActionType = {
-  type: "ADD-POST"
-}
+export  type AddPostActionType = ReturnType<typeof addPostAC>
 
 
-export  type ChangePostTextActionType = {
-  type: "CHANGE-POST-TEXT"
-  payload: {
-      newText: string
-  }
-}
+export  type ChangePostTextActionType = ReturnType<typeof changePostTextAC>
+
 
 export const addPostAC = () => ({ type: ADD_POST } as const);
 

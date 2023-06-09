@@ -31,17 +31,10 @@ export const messagesReducer = (state: MessagesDataType, action: ActionType): Me
     }
 }
 
-export type AddMessageActionType = {
-    type: "ADD-MESSAGE"
-}
+export type AddMessageActionType = ReturnType<typeof addMessageAC>
 
+export type ChangeMessageTextActionType = ReturnType<typeof changeMessageTextAC>
 
-export type ChangeMessageTextActionType = {
-    type: "CHANGE-MESSAGE-TEXT"
-    payload: {
-        newText: string
-    }
-}
 
 export const addMessageAC = () => ({ type: ADD_MESSAGE }) as const
 
