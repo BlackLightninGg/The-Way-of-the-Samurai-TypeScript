@@ -24,7 +24,7 @@ const App = ({store}: any) => {
             <div className={s.content}>
                 <Routes>
                     <Route path='/messages/*'
-                           element={<MessagesContainer messagesData={messagesData} dispatch={dispatch}/>}/>
+                           element={<MessagesContainer/>}/>
                     <Route path='/profile' element={<Profile profileData={profileData} dispatch={dispatch}/>}/>
                     <Route path='/news' element={<News/>}/>
                     <Route path='/music' element={<Music/>}/>
