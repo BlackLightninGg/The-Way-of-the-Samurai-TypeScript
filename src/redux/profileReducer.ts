@@ -1,36 +1,56 @@
-import { ActionType, ProfileDataType } from "./store";
-
 const ADD_POST = "ADD-POST";
 const CHANGE_POST_TEXT = "CHANGE-POST-TEXT";
 
-export const profileReducer = (state: ProfileDataType, action: ActionType): ProfileDataType => {
+export type ActionType = AddPostActionType | ChangePostTextActionType
 
-  switch (action.type) {
-    case ADD_POST:
-      if (state.textPost.trim() !== "") {
-        state.postData = [
-          {
-            id: state.postData.length + 1,
-            message: state.textPost,
-            likeCounter: 0,
-          },
-          ...state.postData,
-        ];
 
-        state.textPost = "";
+export type ProfileDataType = {
+    postData: PostDataType[]
+    textPost: string
+}
 
-      }
+export type PostDataType = {
+    id: number
+    message: string
+    likeCounter: number
+}
 
-      return state
+const initialState: ProfileDataType = {
+    postData: [
+        {id: 1, message: "Beautiful!", likeCounter: 9},
+        {id: 2, message: "Have a nice day!", likeCounter: 5},
+    ],
+    textPost: ""
+}
 
-    case CHANGE_POST_TEXT:
-      state.textPost = action.payload.newText;
+export const profileReducer = (state = initialState, action: ActionType): ProfileDataType => {
 
-      return state;
+    switch (action.type) {
+        case ADD_POST:
+            if (state.textPost.trim() !== "") {
+                state.postData = [
+                    {
+                        id: state.postData.length + 1,
+                        message: state.textPost,
+                        likeCounter: 0,
+                    },
+                    ...state.postData,
+                ];
 
-    default:
-      return state;
-  }
+                state.textPost = "";
+
+            }
+
+            return state
+
+        case CHANGE_POST_TEXT:
+            state.textPost = action.payload.newText;
+
+            return state;
+
+        default:
+            return state;
+    }
 };
 
 
@@ -40,12 +60,12 @@ export  type AddPostActionType = ReturnType<typeof addPostAC>
 export  type ChangePostTextActionType = ReturnType<typeof changePostTextAC>
 
 
-export const addPostAC = () => ({ type: ADD_POST } as const);
+export const addPostAC = () => ({type: ADD_POST} as const);
 
 export const changePostTextAC = (newText: string) =>
-({
-  type: CHANGE_POST_TEXT,
-  payload: {
-    newText,
-  },
-} as const);
+    ({
+        type: CHANGE_POST_TEXT,
+        payload: {
+            newText,
+        },
+    } as const);

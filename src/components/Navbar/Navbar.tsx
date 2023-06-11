@@ -2,12 +2,14 @@ import {NavLink} from 'react-router-dom'
 import s from './Navbar.module.css'
 import React from "react";
 import {FriendsSection} from "./FriendsSection/FriendsSection";
-import {UsersDataType} from "../../redux/store";
+import {UsersDataType} from "../../redux/messagesReducer";
 
-type PropsType = {
-    friendsData:UsersDataType[]
+
+type NavbarPropsType = {
+    friendsData: UsersDataType[]
 }
-export const Navbar: React.FC<PropsType> = ({friendsData}) => {
+export const Navbar = ({friendsData}: NavbarPropsType) => {
+    console.log(friendsData)
     return (
         <nav className={s.navbar}>
             <div className={s.navButtonsSection}>

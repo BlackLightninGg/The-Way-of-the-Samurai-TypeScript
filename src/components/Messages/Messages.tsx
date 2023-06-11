@@ -1,9 +1,8 @@
 import React, { ChangeEvent } from "react";
-import { ActionType, MessagesDataType } from "../../redux/store";
 import { DialogUser } from './DialogUser/DialogUser';
 import s from './Messages.module.css';
 import { UserMessage } from './UserMessage/UserMessage';
-import { addMessageAC, changeMessageTextAC } from "../../redux/messagesReducer";
+import {addMessageAC, changeMessageTextAC, MessagesDataType, ActionType} from "../../redux/messagesReducer";
 
 type PropsType = {
     messagesData: MessagesDataType

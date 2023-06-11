@@ -1,13 +1,13 @@
-import { ChangeEvent } from "react";
-import { ActionType, ProfileDataType, addPostAC, changePostTextAC } from "../../../redux/state";
+import {ChangeEvent} from "react";
 import s from './MyPosts.module.css';
-import { Post } from './Post/Post';
+import {Post} from './Post/Post';
+import {ActionType, addPostAC, changePostTextAC, ProfileDataType} from "../../../redux/profileReducer";
 
 type MyPostsPropsType = {
     profileData: ProfileDataType
     dispatch: (action: ActionType) => void
 }
-export const MyPosts = ({ profileData, dispatch }: MyPostsPropsType) => {
+export const MyPosts = ({profileData, dispatch}: MyPostsPropsType) => {
 
     const onChangeInputPostHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         dispatch(changePostTextAC(e.currentTarget.value))
@@ -22,7 +22,7 @@ export const MyPosts = ({ profileData, dispatch }: MyPostsPropsType) => {
             <div>
                 <h3>My posts</h3>
                 <div>
-                    <textarea value={profileData.textPost} onChange={onChangeInputPostHandler} />
+                    <textarea value={profileData.textPost} onChange={onChangeInputPostHandler}/>
                 </div>
                 <div>
                     <button className={s.buttonPost} onClick={onClickAddPostHandler}>Add post</button>
@@ -30,7 +30,7 @@ export const MyPosts = ({ profileData, dispatch }: MyPostsPropsType) => {
             </div>
 
             {profileData.postData.map(p => <Post key={p.id} id={p.id} message={p.message}
-                likeCounter={p.likeCounter} />)}
+                                                 likeCounter={p.likeCounter}/>)}
 
         </div>
     )

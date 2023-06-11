@@ -7,14 +7,15 @@ import { Navbar } from "./components/Navbar/Navbar";
 import { News } from './components/News/News';
 import { Profile } from "./components/Profile/Profile";
 import { Settings } from './components/Settings/Settings';
-import { StoreType } from "./redux/store";
+// import { StoreType } from "./redux/store";
 
-type AppPropsType = {
-    store: StoreType
-}
+// type AppPropsType = {
+//     store: StoreType
+// }
 
-const App = ({ store }: AppPropsType) => {
+const App = ({ store }: any) => {
     const { messagesData, profileData } = store.getState()
+    console.log(profileData)
     const dispatch = store.dispatch.bind(store)
     return (
 

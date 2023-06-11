@@ -1,11 +1,13 @@
 import React from "react";
 import s from "./FriendsSection.module.css";
-import {UsersDataType} from "../../../redux/store";
+import {UsersDataType} from "../../../redux/messagesReducer";
 
-type PropsType = {
+
+type FriendsSectionPropsType = {
     friendsData: UsersDataType[]
 }
-export const FriendsSection: React.FC<PropsType> = ({friendsData}) => {
+export const FriendsSection = ({friendsData}: FriendsSectionPropsType) => {
+    console.log(friendsData)
     return (
         <div className={s.friendSection}>
             <h3 className={s.title}>Friends</h3>
