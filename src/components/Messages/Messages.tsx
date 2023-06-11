@@ -1,31 +1,31 @@
-import React, { ChangeEvent } from "react";
-import { DialogUser } from './DialogUser/DialogUser';
+import React, {ChangeEvent} from "react";
+import {DialogUser} from './DialogUser/DialogUser';
 import s from './Messages.module.css';
-import { UserMessage } from './UserMessage/UserMessage';
-import {addMessageAC, changeMessageTextAC, MessagesDataType, ActionType} from "../../redux/messagesReducer";
+import {UserMessage} from './UserMessage/UserMessage';
+import {MessagesDataType} from "../../redux/messagesReducer";
 
-type PropsType = {
+type MessagesPropsType = {
     messagesData: MessagesDataType
-    dispatch: (action: ActionType) => void
+    dispatchNewTextInput: (newText: string) => void
+    addMessage: () => void
 }
-export const Messages: React.FC<PropsType> = ({ messagesData, dispatch }) => {
+export const Messages = ({messagesData, dispatchNewTextInput, addMessage}: MessagesPropsType) => {
     const onChangeMessageTextHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        dispatch(changeMessageTextAC(e.currentTarget.value))
+        dispatchNewTextInput(e.currentTarget.value)
     }
-    const onClickMessageTextHandler = () => {
-        dispatch(addMessageAC())
-    }
-
 
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-                {messagesData.messagesUsersData.map(u => <DialogUser key={u.id} id={u.id} animalName={u.animalName} photoAvatar={u.photoAvatar} />)}
+                {messagesData.messagesUsersData.map(u => <DialogUser key={u.id} id={u.id} animalName={u.animalName}
+                                                                     photoAvatar={u.photoAvatar}/>)}
             </div>
             <div className={s.messages}>
-                {messagesData.messagesTextData.map(m => <UserMessage key={m.id} id={m.id} messageText={m.messageText} />)}
-                <textarea onChange={onChangeMessageTextHandler} value={messagesData.messageText} placeholder="Enter your message" />
-                <button onClick={onClickMessageTextHandler}>Sent message</button>
+                {messagesData.messagesTextData.map(m => <UserMessage key={m.id} id={m.id}
+                                                                     messageText={m.messageText}/>)}
+                <textarea onChange={onChangeMessageTextHandler} value={messagesData.messageText}
+                          placeholder="Enter your message"/>
+                <button onClick={addMessage}>Sent message</button>
             </div>
 
         </div>

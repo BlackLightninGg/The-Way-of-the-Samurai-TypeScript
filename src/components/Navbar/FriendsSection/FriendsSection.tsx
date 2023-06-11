@@ -7,7 +7,6 @@ type FriendsSectionPropsType = {
     friendsData: UsersDataType[]
 }
 export const FriendsSection = ({friendsData}: FriendsSectionPropsType) => {
-    console.log(friendsData)
     return (
         <div className={s.friendSection}>
             <h3 className={s.title}>Friends</h3>

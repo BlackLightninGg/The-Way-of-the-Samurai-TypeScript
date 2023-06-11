@@ -1,20 +1,17 @@
 import {ChangeEvent} from "react";
 import s from './MyPosts.module.css';
 import {Post} from './Post/Post';
-import {ActionType, addPostAC, changePostTextAC, ProfileDataType} from "../../../redux/profileReducer";
+import {ProfileDataType} from "../../../redux/profileReducer";
 
 type MyPostsPropsType = {
     profileData: ProfileDataType
-    dispatch: (action: ActionType) => void
+    dispatchNewTextInput: (newText: string) => void
+    addPost: () => void
 }
-export const MyPosts = ({profileData, dispatch}: MyPostsPropsType) => {
+export const MyPosts = ({profileData, dispatchNewTextInput, addPost}: MyPostsPropsType) => {
 
     const onChangeInputPostHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        dispatch(changePostTextAC(e.currentTarget.value))
-    }
-
-    const onClickAddPostHandler = () => {
-        dispatch(addPostAC())
+        dispatchNewTextInput(e.currentTarget.value)
     }
 
     return (
@@ -25,7 +22,7 @@ export const MyPosts = ({profileData, dispatch}: MyPostsPropsType) => {
                     <textarea value={profileData.textPost} onChange={onChangeInputPostHandler}/>
                 </div>
                 <div>
-                    <button className={s.buttonPost} onClick={onClickAddPostHandler}>Add post</button>
+                    <button className={s.buttonPost} onClick={addPost}>Add post</button>
                 </div>
             </div>
 

@@ -9,7 +9,6 @@ type NavbarPropsType = {
     friendsData: UsersDataType[]
 }
 export const Navbar = ({friendsData}: NavbarPropsType) => {
-    console.log(friendsData)
     return (
         <nav className={s.navbar}>
             <div className={s.navButtonsSection}>
