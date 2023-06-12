@@ -4,15 +4,15 @@ import App from "./App";
 import './index.css';
 // import { store } from "./redux/store";
 import {reduxStore} from "./redux/reduxStore";
-import {StoreContext} from "./redux/storeContext";
+import {Provider} from "./redux/storeContext";
 
 
 const renderEntireTree = () => {
     ReactDOM.render(
         <BrowserRouter>
-            <StoreContext.Provider value={reduxStore}>
+            <Provider value={reduxStore}>
                 <App/>,
-            </StoreContext.Provider>
+            </Provider>
         </BrowserRouter>,
         document.getElementById('root')
     );
