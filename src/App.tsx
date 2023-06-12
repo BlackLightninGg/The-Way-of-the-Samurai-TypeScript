@@ -13,13 +13,12 @@ import {MessagesContainer} from "./components/Messages/MessagesContainer";
 //     store: StoreType
 // }
 
-const App = ({store}: any) => {
-    const {messagesData} = store.getState()
+const App = () => {
     return (
 
         <div className={s.appWrapper}>
             <Header/>
-            <Navbar friendsData={messagesData.messagesUsersData}/>
+            <Navbar/>
             <div className={s.content}>
                 <Routes>
                     <Route path='/messages/*'

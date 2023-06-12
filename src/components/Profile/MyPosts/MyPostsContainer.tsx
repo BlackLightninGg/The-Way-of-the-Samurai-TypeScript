@@ -7,7 +7,7 @@ import {StoreContext} from "../../../redux/storeContext";
 //     profileData: ProfileDataType
 //     dispatch: (action: ActionType) => void
 // }
-export const MyPostsContainer = ({}) => {
+export const MyPostsContainer = () => {
 
     const profileData = useContext(StoreContext).getState().profileData
     const dispatch = useContext(StoreContext).dispatch

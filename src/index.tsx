@@ -11,7 +11,7 @@ const renderEntireTree = () => {
     ReactDOM.render(
         <BrowserRouter>
             <StoreContext.Provider value={reduxStore}>
-                <App store={reduxStore}/>,
+                <App/>,
             </StoreContext.Provider>
         </BrowserRouter>,
         document.getElementById('root')
