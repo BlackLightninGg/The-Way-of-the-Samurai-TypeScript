@@ -14,8 +14,7 @@ import {MessagesContainer} from "./components/Messages/MessagesContainer";
 // }
 
 const App = ({store}: any) => {
-    const {messagesData, profileData} = store.getState()
-    const dispatch = store.dispatch.bind(store)
+    const {messagesData} = store.getState()
     return (
 
         <div className={s.appWrapper}>
@@ -25,7 +24,7 @@ const App = ({store}: any) => {
                 <Routes>
                     <Route path='/messages/*'
                            element={<MessagesContainer/>}/>
-                    <Route path='/profile' element={<Profile profileData={profileData} dispatch={dispatch}/>}/>
+                    <Route path='/profile' element={<Profile/>}/>
                     <Route path='/news' element={<News/>}/>
                     <Route path='/music' element={<Music/>}/>
                     <Route path='/settings' element={<Settings/>}/>
