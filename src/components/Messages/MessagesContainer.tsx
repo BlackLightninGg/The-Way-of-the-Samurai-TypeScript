@@ -6,8 +6,8 @@ import { Messages } from "./Messages";
 
 // export const MessagesContainer = () => {
 
-//     let messagesData = useSelector<ReducersType, MessagesDataType>(state => state.messagesData)
-//     let dispatch = useDispatch()
+//     const messagesData = useSelector<ReducersType, MessagesDataType>(state => state.messagesData)
+//     const dispatch = useDispatch()
 
 //     const dispatchNewTextInput = (newText: string) => {
 //         dispatch(changeMessageTextAC(newText))
