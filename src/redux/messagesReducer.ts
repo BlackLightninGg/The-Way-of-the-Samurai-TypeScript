@@ -6,7 +6,7 @@ import AvatarWolf from "../imgs/Wolf.png";
 const ADD_MESSAGE = "ADD-MESSAGE"
 const CHANGE_MESSAGE_TEXT = "CHANGE-MESSAGE-TEXT"
 
-export type ActionType = ChangeMessageTextActionType | AddMessageActionType
+export type MessagesReducerActionType = ChangeMessageTextActionType | AddMessageActionType
 
 
 export type MessagesDataType = {
@@ -45,7 +45,7 @@ const initialState: MessagesDataType = {
 }
 
 
-export const messagesReducer = (state = initialState, action: ActionType): MessagesDataType => {
+export const messagesReducer = (state = initialState, action: MessagesReducerActionType): MessagesDataType => {
 
     switch (action.type) {
         case CHANGE_MESSAGE_TEXT:
