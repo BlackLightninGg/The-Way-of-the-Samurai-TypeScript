@@ -1,17 +1,13 @@
-import {ActionType, addPostAC, changePostTextAC, ProfileDataType} from "../../../redux/profileReducer";
-import {MyPosts} from "./MyPosts";
-import {useContext} from "react";
-import {StoreContext} from "../../../redux/storeContext";
+import { useDispatch, useSelector } from "react-redux";
+import { addPostAC, changePostTextAC, ProfileDataType } from "../../../redux/profileReducer";
+import { ReducersType } from "../../../redux/reduxStore";
+import { MyPosts } from "./MyPosts";
 
-// type MyPostsContainerPropsType = {
-//     profileData: ProfileDataType
-//     dispatch: (action: ActionType) => void
-// }
+
 export const MyPostsContainer = () => {
 
-    const profileData = useContext(StoreContext).getState().profileData
-    const dispatch = useContext(StoreContext).dispatch
-
+    const profileData = useSelector<ReducersType, ProfileDataType>(state => state.profileData)
+    const dispatch = useDispatch()
     const dispatchNewTextInput = (newText: string) => {
         dispatch(changePostTextAC(newText))
     }
@@ -20,6 +16,6 @@ export const MyPostsContainer = () => {
         dispatch(addPostAC())
     }
 
-    return <MyPosts profileData={profileData} dispatchNewTextInput={dispatchNewTextInput} addPost={addPost}/>
+    return <MyPosts profileData={profileData} dispatchNewTextInput={dispatchNewTextInput} addPost={addPost} />
 
 }

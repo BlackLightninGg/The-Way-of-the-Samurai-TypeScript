@@ -1,16 +1,13 @@
-import React, {useContext} from "react";
-import {ActionType, addMessageAC, changeMessageTextAC, MessagesDataType} from "../../redux/messagesReducer";
-import {Messages} from "./Messages";
-import {reduxStore} from "../../redux/reduxStore";
-import {StoreContext} from "../../redux/storeContext";
+import { useDispatch, useSelector } from "react-redux";
+import { MessagesDataType, addMessageAC, changeMessageTextAC } from "../../redux/messagesReducer";
+import { ReducersType } from "../../redux/reduxStore";
+import { Messages } from "./Messages";
 
-// type MessagesContainerPropsType = {
-//     messagesData: MessagesDataType
-//     dispatch: (action: ActionType) => void
-// }
+
 export const MessagesContainer = () => {
-    const messagesData = useContext(StoreContext).getState().messagesData
-    const dispatch = useContext(StoreContext).dispatch
+
+    let messagesData = useSelector<ReducersType, MessagesDataType>(state => state.messagesData)
+    let dispatch = useDispatch()
 
     const dispatchNewTextInput = (newText: string) => {
         dispatch(changeMessageTextAC(newText))
@@ -20,5 +17,5 @@ export const MessagesContainer = () => {
     }
 
 
-    return <Messages messagesData={messagesData} dispatchNewTextInput={dispatchNewTextInput} addMessage={addMessage}/>
+    return <Messages messagesData={messagesData} dispatchNewTextInput={dispatchNewTextInput} addMessage={addMessage} />
 }
