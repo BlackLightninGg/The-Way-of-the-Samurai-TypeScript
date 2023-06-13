@@ -19,3 +19,23 @@ export const MessagesContainer = () => {
 
     return <Messages messagesData={messagesData} dispatchNewTextInput={dispatchNewTextInput} addMessage={addMessage} />
 }
+
+
+// const mapStateToProps = (state: MessagesDataType) => {
+//     return {
+//         messagesData: state
+//     }
+// }
+
+// const mapDispatchtoProps = (dispatch: (action:MessagesReducerActionType)=>void) => {
+//     return {
+//         dispatchNewTextInput: (newText: string) => {
+//             dispatch(changeMessageTextAC(newText))
+//         },
+//         addMessage: () => {
+//             dispatch(addMessageAC())
+//         }
+//     }
+// }
+
+// export const MessagesContainer = connect(mapStateToProps, mapDispatchtoProps)(Messages)
