@@ -26,6 +26,7 @@ export type TextDataType = {
     messageText: string
 }
 
+
 const initialState: MessagesDataType = {
     messagesUsersData: [
         { id: 1, animalName: 'Fox', photoAvatar: AvatarFox },
@@ -79,11 +80,11 @@ export type AddMessageActionType = ReturnType<typeof addMessageAC>
 export type ChangeMessageTextActionType = ReturnType<typeof changeMessageTextAC>
 
 
-export const addMessageAC = () => ({type: ADD_MESSAGE}) as const
+export const addMessageAC = () => ({ type: ADD_MESSAGE } as const)
 
 export const changeMessageTextAC = (newText: string) => ({
     type: CHANGE_MESSAGE_TEXT,
     payload: {
         newText
     }
-}) as const
+} as const) 
