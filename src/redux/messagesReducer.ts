@@ -50,22 +50,21 @@ export const messagesReducer = (state = initialState, action: MessagesReducerAct
 
     switch (action.type) {
         case CHANGE_MESSAGE_TEXT:
-            state.messageText = action.payload.newText
 
-            return state;
+
+            return { ...state, messageText: action.payload.newText };
 
         case ADD_MESSAGE:
 
 
             if (state.messageText.trim() !== '') {
 
-                state.messagesTextData = [...state.messagesTextData, {
-                    id: state.messagesTextData.length + 1,
-                    messageText: state.messageText,
-                }]
-
-                state.messageText = ''
-
+                return {
+                    ...state, messagesTextData: [...state.messagesTextData, {
+                        id: state.messagesTextData.length + 1,
+                        messageText: state.messageText,
+                    },], messageText: ''
+                }
             }
 
             return state;
