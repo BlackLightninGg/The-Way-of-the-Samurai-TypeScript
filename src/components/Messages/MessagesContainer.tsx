@@ -4,47 +4,47 @@ import { ReducersType } from "../../redux/reduxStore";
 import { Messages } from "./Messages";
 
 
-export const MessagesContainer = () => {
+// export const MessagesContainer = () => {
 
-    let messagesData = useSelector<ReducersType, MessagesDataType>(state => state.messagesData)
-    let dispatch = useDispatch()
+//     let messagesData = useSelector<ReducersType, MessagesDataType>(state => state.messagesData)
+//     let dispatch = useDispatch()
 
-    const dispatchNewTextInput = (newText: string) => {
-        dispatch(changeMessageTextAC(newText))
-    }
-    const addMessage = () => {
-        dispatch(addMessageAC())
-    }
+//     const dispatchNewTextInput = (newText: string) => {
+//         dispatch(changeMessageTextAC(newText))
+//     }
+//     const addMessage = () => {
+//         dispatch(addMessageAC())
+//     }
 
 
-    return <Messages messagesData={messagesData} dispatchNewTextInput={dispatchNewTextInput} addMessage={addMessage} />
+//     return <Messages messagesData={messagesData} dispatchNewTextInput={dispatchNewTextInput} addMessage={addMessage} />
+// }
+
+type MapStateToPropsType = {
+    messagesData: MessagesDataType
 }
 
-// type MapStateToPropsType = {
-//     messagesData: MessagesDataType
-// }
-
-// type MapDispatchtoPropsType = {
-//     dispatchNewTextInput: (newText: string) => void
-//     addMessage: () => void
-// }
+type MapDispatchtoPropsType = {
+    dispatchNewTextInput: (newText: string) => void
+    addMessage: () => void
+}
 
 
-// const mapStateToProps = (state: ReducersType): MapStateToPropsType => {
-//     return {
-//         messagesData: state.messagesData
-//     }
-// }
+const mapStateToProps = (state: ReducersType): MapStateToPropsType => {
+    return {
+        messagesData: state.messagesData
+    }
+}
 
-// const mapDispatchtoProps = (dispatch: (action: MessagesReducerActionType) => void): MapDispatchtoPropsType => {
-//     return {
-//         dispatchNewTextInput: (newText: string) => {
-//             dispatch(changeMessageTextAC(newText))
-//         },
-//         addMessage: () => {
-//             dispatch(addMessageAC())
-//         }
-//     }
-// }
+const mapDispatchtoProps = (dispatch: (action: MessagesReducerActionType) => void): MapDispatchtoPropsType => {
+    return {
+        dispatchNewTextInput: (newText: string) => {
+            dispatch(changeMessageTextAC(newText))
+        },
+        addMessage: () => {
+            dispatch(addMessageAC())
+        }
+    }
+}
 
-// export const MessagesContainer = connect(mapStateToProps, mapDispatchtoProps)(Messages)
+export const MessagesContainer = connect(mapStateToProps, mapDispatchtoProps)(Messages)

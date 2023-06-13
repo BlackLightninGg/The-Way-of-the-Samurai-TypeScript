@@ -17,8 +17,8 @@ export type PostDataType = {
 
 const initialState: ProfileDataType = {
     postData: [
-        {id: 1, message: "Beautiful!", likeCounter: 9},
-        {id: 2, message: "Have a nice day!", likeCounter: 5},
+        { id: 1, message: "Beautiful!", likeCounter: 9 },
+        { id: 2, message: "Have a nice day!", likeCounter: 5 },
     ],
     textPost: ""
 }
@@ -28,25 +28,22 @@ export const profileReducer = (state = initialState, action: ActionType): Profil
     switch (action.type) {
         case ADD_POST:
             if (state.textPost.trim() !== "") {
-                state.postData = [
-                    {
+
+                return {
+                    ...state, postData: [{
                         id: state.postData.length + 1,
                         message: state.textPost,
                         likeCounter: 0,
-                    },
-                    ...state.postData,
-                ];
-
-                state.textPost = "";
+                    }, ...state.postData], textPost: ""
+                }
 
             }
 
             return state
 
         case CHANGE_POST_TEXT:
-            state.textPost = action.payload.newText;
 
-            return state;
+            return { ...state, textPost: action.payload.newText };
 
         default:
             return state;
@@ -54,18 +51,18 @@ export const profileReducer = (state = initialState, action: ActionType): Profil
 };
 
 
-export  type AddPostActionType = ReturnType<typeof addPostAC>
+export type AddPostActionType = ReturnType<typeof addPostAC>
 
 
-export  type ChangePostTextActionType = ReturnType<typeof changePostTextAC>
+export type ChangePostTextActionType = ReturnType<typeof changePostTextAC>
 
 
-export const addPostAC = () => ({type: ADD_POST} as const);
+export const addPostAC = () => ({ type: ADD_POST } as const);
 
 export const changePostTextAC = (newText: string) =>
-    ({
-        type: CHANGE_POST_TEXT,
-        payload: {
-            newText,
-        },
-    } as const);
+({
+    type: CHANGE_POST_TEXT,
+    payload: {
+        newText,
+    },
+} as const);
