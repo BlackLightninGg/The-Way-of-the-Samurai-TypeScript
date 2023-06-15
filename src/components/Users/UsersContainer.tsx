@@ -17,5 +17,5 @@ export const UsersContainer = () => {
         }
     
 
-    return <Users usersData={usersData} dispatchFollow={dispatchFollow}/>
+    return <Users usersData={usersData} dispatchFollow={dispatchFollow} dispatchNewUsers={dispatchNewUsers}/>
 }
