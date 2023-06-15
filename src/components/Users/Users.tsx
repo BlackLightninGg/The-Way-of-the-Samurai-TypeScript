@@ -1,31 +1,45 @@
 import { UsersType } from "../../redux/usersReducer"
+import s from "./Users.module.css"
 
 export type UsersPropsType = {
     usersData: UsersType
+    dispatchFollow: (userId: number) => void
 }
 
-export const Users = ({ usersData }: UsersPropsType) => {
+export const Users = ({ usersData, dispatchFollow }: UsersPropsType) => {
+
+    // const onClickFollow = () => {
+    //     dispatchFollow()
+    // }
+
     return <div>
-        {usersData.users.map(u => <div key={u.id}>
-            <span>
-                <div>
-                    <img src="#" alt="#" />
-                </div>
-                <div>
-                    <button>Follow</button>
-                </div>
-            </span>
-            <span>
+        {usersData.users.map(u => {
+            const onClickFollow = () => {
+                dispatchFollow(u.id)
+            }
+            return (<div key={u.id}>
                 <span>
-                    <div>{u.fullName}</div>
-                    <div>{u.status}</div>
+                    <div>
+                        <img className={s.userAvatar} src={u.userAvatar} alt="#" />
+                    </div>
+                    <div>
+                        <button onClick={onClickFollow}>{u.follow ? "Follow" : "Unfollow"}</button>
+                    </div>
                 </span>
                 <span>
-                    <div>{u.location.country}</div>
-                    <div>{u.location.city}</div>
+                    <span>
+                        <div>{u.fullName}</div>
+                        <div>{u.status}</div>
+                    </span>
+                    <span>
+                        <div>{u.location.country}</div>
+                        <div>{u.location.city}</div>
+                    </span>
                 </span>
-            </span>
-            
-        </div>)}
+    
+            </div>)}
+        )
+        }
+        
     </div>
 }
