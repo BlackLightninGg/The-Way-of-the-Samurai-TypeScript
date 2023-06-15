@@ -26,9 +26,7 @@ const SET_USERS = "SET-USERS"
 
 const initialState: UsersType = {
     users: [
-        { id: 1, fullName: "Artur", userAvatar: AvatarUnknownUser, status: "I love work!", location: { city: "Astana", country: "Kazakhstan" }, follow: true },
-        { id: 2, fullName: "Matvey", userAvatar: AvatarUnknownUser, status: "My life my rules", location: { city: "Tbilisi", country: "Georgia" }, follow: false },
-        { id: 3, fullName: "Maria", userAvatar: AvatarUnknownUser, status: "Live without regrets", location: { city: "Altai", country: "Kazakhstan" }, follow: true },
+        
     ]
 }
 
@@ -42,6 +40,7 @@ export const usersReducer = (state = initialState, action: UsersAtionType): User
             return { ...state, users: state.users.map(u => u.id === action.payload.userId ? { ...u, follow: !u.follow } : u) }
 
         case SET_USERS:
+            
             return { ...state, users: [...state.users, ...action.payload.users] }
 
         default:
