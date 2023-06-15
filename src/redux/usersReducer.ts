@@ -41,7 +41,7 @@ export const usersReducer = (state = initialState, action: UsersAtionType): User
 
         case SET_USERS:
             
-            return { ...state, users: [...state.users, ...action.payload.users] }
+            return { ...state, users: action.payload.users }
 
         default:
             return state
